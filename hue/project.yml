@@ -1,0 +1,50 @@
+name: hue
+options:
+  bundleIdPrefix: com.hue
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    PRODUCT_NAME: hue
+    SWIFT_VERSION: "5.10"
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+    ENABLE_HARDENED_RUNTIME: YES
+    CODE_SIGN_STYLE: Automatic
+    DEVELOPMENT_TEAM: MG3X82M499
+    INFOPLIST_FILE: hue/Info.plist
+    CODE_SIGN_ENTITLEMENTS: hue/Hue.entitlements
+    # Disable App Sandbox — required for ScreenCaptureKit system audio capture
+    ENABLE_APP_SANDBOX: NO
+    # Metal
+    MTL_ENABLE_DEBUG_INFO: INCLUDE_SOURCE
+    # Performance
+    SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+    GCC_OPTIMIZATION_LEVEL: "0"
+  configs:
+    Release:
+      SWIFT_OPTIMIZATION_LEVEL: "-O"
+      GCC_OPTIMIZATION_LEVEL: "s"
+      MTL_ENABLE_DEBUG_INFO: NO
+
+targets:
+  hue:
+    type: application
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: hue
+        excludes:
+          - "**/*.xcassets"
+          - "Fonts/**"
+    resources:
+      - hue/Assets.xcassets
+      - hue/Fonts
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.hue.app
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        # ScreenCaptureKit framework
+        OTHER_LDFLAGS: "-framework ScreenCaptureKit"
