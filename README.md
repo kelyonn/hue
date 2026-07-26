@@ -10,38 +10,25 @@
 
 ---
 
-## The story
+## About the project
 
-Hue started the way a lot of honest software starts: not with a market, but with
-a question that wouldn’t leave someone alone.
+Hue is a native macOS app that listens to whatever is already playing on your
+Mac — Spotify, Apple Music, YouTube, a game, a podcast — and renders it as a
+live fluid field of colour on the GPU, entirely on-device.
 
-The person who made this loves music — the kind of love where a song can rearrange
-a whole afternoon. Somewhere along the way they learned about **synesthesia**,
-and specifically **chromesthesia**: that rare wiring where sound involuntarily
-arrives as colour. Roughly four percent of people live with some form of it.
-Most of us don’t. And yet almost everyone has felt, at least once, that a minor
-chord is somehow *cooler* than a major one, or that a bright guitar sits higher
-in the mind than a sub-bass.
+The colour mapping is modelled on **chromesthesia**, the form of synesthesia
+where sound involuntarily produces colour, and on research into how everyone
+else associates music with colour. The findings are surprisingly consistent:
+pitch tracks lightness, emotion drives hue — major and happy pull warm, minor
+and sad pull cool — and energy drives saturation. Hue implements those
+relationships in a perceptually uniform colour space (OkLCh), so equal changes
+in the music produce equal changes in what you see, rather than chasing the
+beat with an arbitrary palette.
 
-Science has a lot to say about those hunches. Pitch tracks lightness for
-synesthetes and non-synesthetes alike. Emotion mediates how music maps to colour
-with startling consistency across cultures. Timbre pulls warm or cool. Energy
-saturates or mutes. Composer note-wheels — Scriabin’s, Rimsky-Korsakov’s — are
-beautiful and personal, but they are *one person’s* private alphabet, not a
-universal law.
-
-Hue is what happens when you take that seriously.
-
-It is a native macOS app that listens to whatever is already playing on your
-computer — Spotify, Apple Music, YouTube, a game, a podcast — and turns it into
-a living fluid field of colour. Not EQ bars. Not a tasteful gradient chasing the
-beat. A perceptual engine, grounded in published research, rendered on the GPU
-at sixty frames a second, entirely on your machine.
-
-This is a **passion project**. It exists because someone wanted to know what
-their favourite songs would look like if the science were allowed to decide,
-and because they were unwilling to ship a fake synesthesia toy with someone
-else’s note-colour wheel pretending to be truth.
+Composer note-wheels — Scriabin’s and Rimsky-Korsakov’s — are included as
+optional profiles because they’re historically interesting, but they are one
+person’s private associations. The default Emotion profile follows the
+population-level data.
 
 > **This software is proprietary.** The source is shared for reading and for
 > running Hue — not for forking into your own product. See [`LICENSE`](LICENSE).
