@@ -1,0 +1,56 @@
+# Proprietary Software License
+
+**Copyright © 2026 kelyonn. All rights reserved.**
+
+This software, including but not limited to its source code, shaders, perceptual
+mapping formulas, design, documentation, and associated assets (collectively,
+the “Software”), is the exclusive property of the copyright holder.
+
+## Grant of rights
+
+No license is granted to you by possession of this repository or any binary
+build of Hue, except the limited right to:
+
+1. Run the compiled `Hue.app` on hardware you personally own or control, for
+   personal, non-commercial use; and
+2. Read the source for personal study of how this particular application works.
+
+## Restrictions
+
+Without prior written permission from the copyright holder, you may **not**:
+
+- Copy, redistribute, publish, or publicly host the Software (source or binary)
+- Modify, adapt, translate, or create derivative works based on the Software
+- Use the Software, in whole or in part, to build another product, service,
+  plugin, library, demo, portfolio piece, or commercial offering
+- Reverse engineer, decompile, or extract the perceptual mapping, Metal shaders,
+  or audio-analysis pipeline for reuse in another project
+- Remove or alter copyright, license, or attribution notices
+- Sublicense, sell, rent, lease, or transfer the Software to any third party
+- Use Hue’s name, branding, or screenshots to imply endorsement of another work
+
+## Ownership of ideas embodied in the code
+
+The chromesthesia mapping (pitch → lightness, emotion-mediated warm↔cool hue,
+arousal → chroma), the three Field modes, the OkLCh rendering path, and the
+overall product design are original expressions protected by copyright. Access
+to this repository does **not** grant a license to reimplement those expressions
+in another codebase.
+
+## No warranty
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+LIABILITY ARISING FROM USE OF THE SOFTWARE.
+
+## Permission requests
+
+For any use beyond personal running of the app — including forks, ports,
+commercial licensing, academic citation with substantial quotation, or
+collaboration — contact the copyright holder and obtain written permission
+before proceeding.
+
+If you found this repository and intended to build on it: **don’t.** Build
+your own thing. This one is spoken for.
