@@ -365,6 +365,8 @@ struct ContentView: View {
     private var keyText: String {
         let features = audioProcessor.latestFeatures
         guard !features.isSilent else { return "—" }
+        // Below ~0.62 the detector is guessing; don't print a fake key.
+        guard features.keyConfidence >= 0.55 else { return "—" }
         return "\(NoteColorTables.noteNames[features.keyPitchClass]) \(features.isMajor ? "major" : "minor")"
     }
 
@@ -377,6 +379,7 @@ struct ContentView: View {
     private var valenceText: String {
         let features = audioProcessor.latestFeatures
         guard !features.isSilent else { return "—" }
+        guard features.keyConfidence >= 0.55 else { return "—" }
         return features.isMajor ? "Major · bright" : "Minor · dark"
     }
 }

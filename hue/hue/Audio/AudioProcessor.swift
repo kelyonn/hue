@@ -59,6 +59,12 @@ final class AudioProcessor: ObservableObject {
     private var ringHead   = 0
     private var ringFull   = false
 
+    /// Even-odd packed FFT *input* (filled by `vDSP_ctoz`). Must be a
+    /// different buffer from `realPart`/`imagPart` — `vDSP.FFT.forward` is
+    /// out-of-place (`vDSP_fft_zrop`) and forbids overlapping source/dest.
+    private var fftInputReal: [Float]
+    private var fftInputImag: [Float]
+    /// FFT *output* spectrum (split-complex, length `fftSize / 2`).
     private var realPart: [Float]
     private var imagPart: [Float]
     private var magnitudes: [Float]
@@ -141,6 +147,8 @@ final class AudioProcessor: ObservableObject {
         hannWindow = vDSP.window(ofType: Float.self, usingSequence: .hanningDenormalized, count: n, isHalfWindow: false)
 
         ringBuffer         = [Float](repeating: 0, count: n)
+        fftInputReal       = [Float](repeating: 0, count: n / 2)
+        fftInputImag       = [Float](repeating: 0, count: n / 2)
         realPart           = [Float](repeating: 0, count: n / 2)
         imagPart           = [Float](repeating: 0, count: n / 2)
         magnitudes         = [Float](repeating: 0, count: n / 2)
@@ -189,16 +197,29 @@ final class AudioProcessor: ObservableObject {
         var windowed = [Float](repeating: 0, count: fftSize)
         vDSP.multiply(samples, hannWindow, result: &windowed)
 
-        // FFT.
+        // Real FFT via even-odd split packing → out-of-place `zrop`.
+        // Source and destination *must* be distinct buffers; the previous
+        // code packed and transformed in the same `realPart`/`imagPart`,
+        // which is undefined for `vDSP_fft_zrop`. That scrambled the
+        // spectrum enough that chromagrams were near-noise and
+        // Krumhansl-Schmuckler fell through to its default: C major.
         windowed.withUnsafeBufferPointer { wPtr in
-            realPart.withUnsafeMutableBufferPointer { rPtr in
-                imagPart.withUnsafeMutableBufferPointer { iPtr in
-                    var splitComplex = DSPSplitComplex(realp: rPtr.baseAddress!, imagp: iPtr.baseAddress!)
-                    wPtr.baseAddress!.withMemoryRebound(to: DSPComplex.self, capacity: fftSize / 2) { cPtr in
-                        vDSP_ctoz(cPtr, 2, &splitComplex, 1, vDSP_Length(fftSize / 2))
+            fftInputReal.withUnsafeMutableBufferPointer { inR in
+                fftInputImag.withUnsafeMutableBufferPointer { inI in
+                    realPart.withUnsafeMutableBufferPointer { outR in
+                        imagPart.withUnsafeMutableBufferPointer { outI in
+                            var input = DSPSplitComplex(realp: inR.baseAddress!, imagp: inI.baseAddress!)
+                            var output = DSPSplitComplex(realp: outR.baseAddress!, imagp: outI.baseAddress!)
+                            wPtr.baseAddress!.withMemoryRebound(to: DSPComplex.self, capacity: fftSize / 2) { cPtr in
+                                vDSP_ctoz(cPtr, 2, &input, 1, vDSP_Length(fftSize / 2))
+                            }
+                            fftSetup.forward(input: input, output: &output)
+                            // Power spectrum. Bin 0 packs DC in realp[0] and
+                            // Nyquist in imagp[0] — don't let zvmags sum them.
+                            vDSP_zvmags(&output, 1, &magnitudes, 1, vDSP_Length(fftSize / 2))
+                            magnitudes[0] = outR[0] * outR[0]
+                        }
                     }
-                    fftSetup.forward(input: splitComplex, output: &splitComplex)
-                    vDSP_zvmags(&splitComplex, 1, &magnitudes, 1, vDSP_Length(fftSize / 2))
                 }
             }
         }
@@ -254,9 +275,19 @@ final class AudioProcessor: ObservableObject {
 
         if frameCounter % keyDetectionIntervalFrames == 0 {
             let key = detectKey(chroma: slowChroma)
-            lastKeyPitchClass = key.pitchClass
-            lastKeyIsMajor    = key.isMajor
-            lastKeyConfidence = key.confidence
+            // Refuse weak matches — Pearson≈0 (flat/noise chroma) remaps to
+            // confidence 0.5 and the search's initial guess is C major, which
+            // is how every track used to read as "C major". Only commit a
+            // new key when the correlation is actually decisive.
+            if key.confidence >= 0.62 {
+                lastKeyPitchClass = key.pitchClass
+                lastKeyIsMajor    = key.isMajor
+                lastKeyConfidence = key.confidence
+            } else {
+                // Decay displayed confidence so the UI doesn't keep advertising
+                // a stale key as if it were still sure.
+                lastKeyConfidence *= 0.92
+            }
         }
         let tempoNorm = clamp01((estimatedBPM - 60) / 120)
         let rawSpectralFlux = clamp01(flux * 15)
@@ -526,17 +557,22 @@ final class AudioProcessor: ObservableObject {
 
     /// Folds FFT magnitude bins into a 12-element pitch-class energy vector
     /// (C, C#, D, … B), weighting by frequency-bin energy and L1-normalizing.
+    ///
+    /// Uses √power (amplitude) rather than raw power so a single loud bass
+    /// partial can't dominate the vector, and stops at 5 kHz — above that
+    /// bin density per semitone explodes and the fold turns into noise that
+    /// Krumhansl-Schmuckler happily misreads as a key.
     private func computeChromagram(_ mags: [Float]) -> [Float] {
         var chroma = [Float](repeating: 0, count: 12)
-        let halfN = mags.count
-        let minBin = max(1, Int((55.0 * Double(fftSize)) / sampleRate))  // ~A1, skip rumble
+        let minBin = max(1, Int((55.0 * Double(fftSize)) / sampleRate))   // ~A1
+        let maxBin = min(mags.count, Int((5_000.0 * Double(fftSize)) / sampleRate))
 
-        for i in minBin..<halfN {
+        for i in minBin..<maxBin {
             let freq = Double(i) * sampleRate / Double(fftSize)
-            guard freq > 20 else { continue }
             let midi = 69.0 + 12.0 * log2(freq / 440.0)
             let pc = ((Int(midi.rounded()) % 12) + 12) % 12
-            chroma[pc] += mags[i]
+            // Amplitude, not power — keeps the vector closer to musical weight.
+            chroma[pc] += sqrt(max(0, mags[i]))
         }
 
         var total: Float = 0
