@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- ScreenCaptureKit audio permission description shown to the user. -->
+    <key>NSScreenCaptureUsageDescription</key>
+    <string>Hue uses Screen &amp; Audio Recording to listen to whatever is playing on your Mac and turn it into synesthetic art. Your screen is never recorded — only the audio signal is used, entirely on-device.</string>
+
+    <!-- Standard macOS app bundle keys (fill in with your Team ID in Xcode). -->
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    <key>CFBundleName</key>
+    <string>Hue</string>
+    <key>CFBundleDisplayName</key>
+    <string>Hue</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.hue.app</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0.0</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>NSPrincipalClass</key>
+    <string>NSApplication</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>14.0</string>
+    <key>LSApplicationCategoryType</key>
+    <string>public.app-category.music</string>
+
+    <!-- Quit cleanly when the window is closed — don't linger as a
+         background ScreenCaptureKit process (that keeps the purple
+         Screen Recording indicator lit). -->
+    <key>NSSupportsAutomaticTermination</key>
+    <true/>
+    <key>NSSuddenTerminationEnabled</key>
+    <false/>
+
+    <!-- Allow rendering at native ProMotion / high refresh rates. -->
+    <key>CADisableMinimumFrameDurationOnPhone</key>
+    <true/>
+
+    <!-- Bundled Archivo weights (Fonts/) — the Hue.dc.html design handoff's
+         typeface. Registered app-wide at launch, no runtime code needed. -->
+    <key>ATSApplicationFontsPath</key>
+    <string>Fonts</string>
+</dict>
+</plist>

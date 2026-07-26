@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!--
+        ScreenCaptureKit requires the Screen Recording permission.
+        The user will be prompted on first launch via SCShareableContent.current.
+
+        IMPORTANT: In Xcode, under Signing & Capabilities:
+          1. Add "Hardened Runtime" capability
+          2. Check "Audio Input" under Hardened Runtime
+          3. The Screen Recording entitlement is NOT a checkbox — it is granted
+             at runtime when the user approves the macOS system dialog.
+
+        Do NOT enable App Sandbox — it conflicts with system audio capture via ScreenCaptureKit.
+    -->
+    <key>com.apple.security.app-sandbox</key>
+    <false/>
+    <key>com.apple.security.device.audio-input</key>
+    <true/>
+</dict>
+</plist>
