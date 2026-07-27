@@ -19,6 +19,7 @@ struct ContentView: View {
     @EnvironmentObject private var captureManager: AudioCaptureManager
     @EnvironmentObject private var audioProcessor: AudioProcessor
     @EnvironmentObject private var colorProfileStore: ColorProfileStore
+    @Environment(\.openWindow) private var openWindow
 
     /// Pointer inside the window — drives the 260ms chrome fade and the real
     /// traffic-light buttons' alpha (see `WindowButtonsFader`).
@@ -154,6 +155,11 @@ struct ContentView: View {
                     .font(.archivo(.semibold, size: 10))
                     .tracking(10 * 0.20)
                     .foregroundStyle(Color.white.opacity(0.5))
+            }
+
+            MiniWindowButton {
+                openWindow(id: "mini")
+                NSApp.activate(ignoringOtherApps: true)
             }
 
             InfoButton { showInfo = true }
@@ -422,5 +428,31 @@ private struct SwitcherButton: View {
     private var textColor: Color {
         if isActive { return .white }
         return isHoveringButton ? .white : Color.white.opacity(0.42)
+    }
+}
+
+// MARK: - MiniWindowButton
+
+/// Compact picture-in-picture control — opens the always-on-top mini field.
+private struct MiniWindowButton: View {
+    let action: () -> Void
+    @State private var isHovering = false
+
+    var body: some View {
+        Button(action: action) {
+            LucideShape(paths: LucideIcon.pictureInPicture)
+                .stroke(
+                    isHovering ? Color.white : Color.white.opacity(0.5),
+                    style: StrokeStyle(lineWidth: 1.6, lineCap: .round, lineJoin: .round)
+                )
+                .frame(width: 15, height: 15)
+                .padding(6)
+                .contentShape(Rectangle())
+        }
+        .buttonStyle(.plain)
+        .focusEffectDisabled()
+        .help("Show Mini")
+        .onHover { isHovering = $0 }
+        .animation(.easeInOut(duration: 0.16), value: isHovering)
     }
 }

@@ -208,6 +208,12 @@ enum LucideIcon {
         "M12 2a10 10 0 1 0 0 20 10 10 0 1 0 0-20z"
     ]
 
+    /// Lucide `picture-in-picture-2` — open the always-on-top mini window.
+    static let pictureInPicture = [
+        "M21 9V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v10c0 1.1.9 2 2 2h4",
+        "M16 14v5a2 2 0 0 0 2 2h3a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2h-3a2 2 0 0 0-2 2z"
+    ]
+
     /// Lucide `x` — close the info overlay.
     static let x = [
         "M18 6 6 18",

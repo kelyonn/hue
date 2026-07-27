@@ -13,7 +13,7 @@ struct HueApp: App {
     @StateObject private var colorProfileStore  = ColorProfileStore()
 
     var body: some Scene {
-        WindowGroup {
+        WindowGroup(id: "main") {
             ContentView()
                 .environmentObject(captureManager)
                 .environmentObject(audioProcessor)
@@ -38,6 +38,19 @@ struct HueApp: App {
             CommandGroup(replacing: .saveItem) { }
             CommandGroup(replacing: .printItem) { }
         }
+
+        // Always-on-top corner widget — field only. Single instance via `Window`.
+        Window("Mini", id: "mini") {
+            MiniContentView()
+                .environmentObject(captureManager)
+                .environmentObject(audioProcessor)
+                .environmentObject(colorProfileStore)
+                .frame(width: 320, height: 200)
+        }
+        .windowStyle(.hiddenTitleBar)
+        .windowResizability(.contentSize)
+        .defaultSize(width: 320, height: 200)
+        .defaultPosition(.bottomTrailing)
 
         // Standard macOS Preferences window (Cmd+,) — hosts the profile
         // radio list, reachable from the menu bar extra and from the

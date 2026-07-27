@@ -1,8 +1,10 @@
 import SwiftUI
+import AppKit
 
 // MARK: - MenuBarContentView
 
-/// Menu bar dropdown — status, quick profile switch, Preferences, Quit.
+/// Menu bar dropdown — status, mini/main window controls, quick profile
+/// switch, Preferences, Quit.
 ///
 /// "Now playing" status is deliberately generic ("Listening" / "Idle"), not
 /// the design mockup's "Listening — Spotify": system-wide ScreenCaptureKit
@@ -13,9 +15,22 @@ struct MenuBarContentView: View {
     @ObservedObject var captureManager: AudioCaptureManager
     @ObservedObject var colorProfileStore: ColorProfileStore
     @Environment(\.openSettings) private var openSettings
+    @Environment(\.openWindow) private var openWindow
 
     var body: some View {
         Text(captureManager.isCapturing ? "Listening" : "Idle")
+
+        Divider()
+
+        Button("Show Mini") {
+            openWindow(id: "mini")
+            NSApp.activate(ignoringOtherApps: true)
+        }
+
+        Button("Show Main Window") {
+            openWindow(id: "main")
+            NSApp.activate(ignoringOtherApps: true)
+        }
 
         Divider()
 

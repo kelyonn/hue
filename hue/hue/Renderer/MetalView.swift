@@ -22,6 +22,10 @@ struct MetalView: NSViewRepresentable {
     /// "3. Permission").
     var dimmed: Bool = false
 
+    /// Display refresh target. Main canvas stays at 60; the always-on-top mini
+    /// window uses 30 so two MTKViews don't double GPU cost for no gain.
+    var preferredFramesPerSecond: Int = 60
+
     // MARK: - NSViewRepresentable
 
     func makeCoordinator() -> MetalRenderer {
@@ -38,10 +42,10 @@ struct MetalView: NSViewRepresentable {
         mtkView.device                  = device
         mtkView.delegate                = context.coordinator
 
-        // Continuous, timer-driven render loop at native display refresh rate.
+        // Continuous, timer-driven render loop at the requested refresh rate.
         mtkView.isPaused                = false
         mtkView.enableSetNeedsDisplay   = false
-        mtkView.preferredFramesPerSecond = 60
+        mtkView.preferredFramesPerSecond = preferredFramesPerSecond
 
         // Pixel format — standard BGRA8 is universally supported.
         mtkView.colorPixelFormat        = .bgra8Unorm
@@ -71,5 +75,6 @@ struct MetalView: NSViewRepresentable {
         // ContentView's flat-color mode) don't re-render on every single
         // audio callback.
         context.coordinator.dim = dimmed ? 0.5 : 1.0
+        nsView.preferredFramesPerSecond = preferredFramesPerSecond
     }
 }
