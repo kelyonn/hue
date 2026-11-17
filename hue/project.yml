@@ -48,3 +48,40 @@ targets:
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         # ScreenCaptureKit framework
         OTHER_LDFLAGS: "-framework ScreenCaptureKit"
+
+  hueTests:
+    # A standalone logic-test bundle: the pure mapping and DSP sources are
+    # compiled straight in, so the tests never launch the app (which needs
+    # screen-recording permission and a Metal device to start).
+    type: bundle.unit-test
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: hueTests
+      - hue/Audio/AudioProcessor.swift
+      - hue/Models/AudioFeatures.swift
+      - hue/Models/ColorProfile.swift
+      - hue/Renderer/PerceptualMapper.swift
+    settings:
+      base:
+        PRODUCT_NAME: hueTests
+        PRODUCT_BUNDLE_IDENTIFIER: com.hue.tests
+        GENERATE_INFOPLIST_FILE: YES
+
+schemes:
+  hue:
+    build:
+      targets:
+        hue: all
+    run:
+      config: Debug
+    archive:
+      config: Release
+  hueTests:
+    build:
+      targets:
+        hueTests: [test]
+    test:
+      config: Debug
+      targets:
+        - hueTests

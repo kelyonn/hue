@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		09F30D8901C0904893838114 /* MenuBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A877ABB090663999522B73 /* MenuBarContentView.swift */; };
-		0ABB7395A9E4731C6CA26D94 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 7352B5AE11A5B3F5157E1D22 /* Fonts */; };
 		0D4E2BB4A289A0825D8F5F0A /* FluidCompute.metal in Sources */ = {isa = PBXBuildFile; fileRef = D31D0D3C9DB9B7C09239AC91 /* FluidCompute.metal */; };
 		36D00B4A94DE09CE257FF0E7 /* LucideIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A653F7C4A47E8572A0B5E7DB /* LucideIcon.swift */; };
 		377F157F9CBE21EEB0DF2683 /* Composite.metal in Sources */ = {isa = PBXBuildFile; fileRef = 56C087A3B251ADF973414034 /* Composite.metal */; };
@@ -19,17 +18,22 @@
 		6247E636AE9D55237E874175 /* InfoOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15545BAA3088AD6706AB48FA /* InfoOverlay.swift */; };
 		6C9A6748E024AE43354C4AE9 /* MiniContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CE385C53A40353ADE569C6 /* MiniContentView.swift */; };
 		7052F71A3F678C2EF3589FF4 /* FloatingWindowConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1717327724303062E5EDF /* FloatingWindowConfigurator.swift */; };
+		749FBD257C581783BA30FB69 /* ColorProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449E00C11CA5787AF9AC0100 /* ColorProfile.swift */; };
 		77EA4399B3619DA1E77F9F3E /* ColorProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449E00C11CA5787AF9AC0100 /* ColorProfile.swift */; };
-		7A5686C9F0F25F649AAA4449 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4FF25AC22FE339A998301F4 /* Assets.xcassets */; };
+		7E934A6A13140769FF313EB6 /* AudioProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039AE91EC2C44BA90A7DFB95 /* AudioProcessorTests.swift */; };
+		80754C7C0A3C4D8A1B65DAD1 /* AudioFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696AAEC5CC44035C0615EF6B /* AudioFeatures.swift */; };
 		8445C959D956CF4166764C1C /* DiagnosticHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B725CBA4A01CDBA7DB0BAAF /* DiagnosticHUD.swift */; };
 		90CEE3470BA86459A750075C /* HueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74FCA7862249790823D9F9 /* HueApp.swift */; };
 		A5DDE884FAD51B4E942E50BE /* AudioProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2487FB010265787D5DAF8DD7 /* AudioProcessor.swift */; };
 		A9F3D2B0DE2453EBAE8CC76A /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2169099848BF72FB888173A2 /* MetalRenderer.swift */; };
 		AC8C53CDA570C9F8357D4393 /* ColorProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E006F1CB70C625EB56A621C /* ColorProfileStore.swift */; };
+		C408D61619972A9A3FAA6946 /* PerceptualMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5857CB976EB0183464141481 /* PerceptualMapper.swift */; };
 		C83BDF1C418DC9E4F3805B17 /* PermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F171B87703C0820F4E28FBC6 /* PermissionView.swift */; };
 		D36AEDBDB498EC0B3698CFC0 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613F2D856CD8E8A3DDC022C1 /* Color+Hex.swift */; };
 		DDF4474AA2947370C68B82EF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A90A8673B558BF1056309A /* ContentView.swift */; };
+		E094340D6F53D64E668DF494 /* PerceptualMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C8AAAAE66155A82E70C7B9 /* PerceptualMapperTests.swift */; };
 		E3AFDE8474770F56C4E2739E /* FieldMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A410DBCEB1585CFDD30CEF /* FieldMode.swift */; };
+		E9818FC88555BB818DC55DCF /* AudioProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2487FB010265787D5DAF8DD7 /* AudioProcessor.swift */; };
 		EBD584F63F47127525794B76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0764EA9792808928CDBC8C /* AppDelegate.swift */; };
 		F310EFA5EE29CD55937C7A4F /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D776A5492B641A3D05B55404 /* MetalView.swift */; };
 		F8FA53A3F3B37ACFEF7CA279 /* Font+Archivo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB547551372E9A3FCAAED26 /* Font+Archivo.swift */; };
@@ -38,6 +42,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		039AE91EC2C44BA90A7DFB95 /* AudioProcessorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioProcessorTests.swift; sourceTree = "<group>"; };
 		15545BAA3088AD6706AB48FA /* InfoOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoOverlay.swift; sourceTree = "<group>"; };
 		2169099848BF72FB888173A2 /* MetalRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRenderer.swift; sourceTree = "<group>"; };
 		2487FB010265787D5DAF8DD7 /* AudioProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioProcessor.swift; sourceTree = "<group>"; };
@@ -55,7 +60,7 @@
 		613F2D856CD8E8A3DDC022C1 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		696AAEC5CC44035C0615EF6B /* AudioFeatures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFeatures.swift; sourceTree = "<group>"; };
 		6BD1717327724303062E5EDF /* FloatingWindowConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingWindowConfigurator.swift; sourceTree = "<group>"; };
-		7352B5AE11A5B3F5157E1D22 /* Fonts */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = Fonts; path = Fonts; sourceTree = "<group>"; };
+		7582A4BBD00FE0D3384A2273 /* hueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		80A410DBCEB1585CFDD30CEF /* FieldMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldMode.swift; sourceTree = "<group>"; };
 		80A90A8673B558BF1056309A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8DB547551372E9A3FCAAED26 /* Font+Archivo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Archivo.swift"; sourceTree = "<group>"; };
@@ -63,8 +68,8 @@
 		A653F7C4A47E8572A0B5E7DB /* LucideIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LucideIcon.swift; sourceTree = "<group>"; };
 		AA74FCA7862249790823D9F9 /* HueApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HueApp.swift; sourceTree = "<group>"; };
 		B4A877ABB090663999522B73 /* MenuBarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarContentView.swift; sourceTree = "<group>"; };
-		C4FF25AC22FE339A998301F4 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Assets.xcassets; sourceTree = "<group>"; };
 		D31D0D3C9DB9B7C09239AC91 /* FluidCompute.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = FluidCompute.metal; sourceTree = "<group>"; };
+		D6C8AAAAE66155A82E70C7B9 /* PerceptualMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerceptualMapperTests.swift; sourceTree = "<group>"; };
 		D776A5492B641A3D05B55404 /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 		EB39C5479DE655B0BDE81FA3 /* HoverTrackingArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoverTrackingArea.swift; sourceTree = "<group>"; };
 		EE0764EA9792808928CDBC8C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				46A83DDCE616112A7E816194 /* hue.app */,
+				7582A4BBD00FE0D3384A2273 /* hueTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,8 +131,18 @@
 			isa = PBXGroup;
 			children = (
 				C832F7BCDCEF7B3E60C389C6 /* hue */,
+				8E2CB92D5434046A9FD0E973 /* hueTests */,
 				34458F4B9A693E643D66C47C /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		8E2CB92D5434046A9FD0E973 /* hueTests */ = {
+			isa = PBXGroup;
+			children = (
+				039AE91EC2C44BA90A7DFB95 /* AudioProcessorTests.swift */,
+				D6C8AAAAE66155A82E70C7B9 /* PerceptualMapperTests.swift */,
+			);
+			path = hueTests;
 			sourceTree = "<group>";
 		};
 		C832F7BCDCEF7B3E60C389C6 /* hue */ = {
@@ -140,8 +156,6 @@
 				22808A0EE117920A59821276 /* Models */,
 				DD96F56EDBD03576472838A4 /* Renderer */,
 				34D966310FD20F6DB555834D /* Views */,
-				C4FF25AC22FE339A998301F4 /* Assets.xcassets */,
-				7352B5AE11A5B3F5157E1D22 /* Fonts */,
 			);
 			path = hue;
 			sourceTree = "<group>";
@@ -162,18 +176,36 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		30ECDE74C2B6E80C815342A9 /* hueTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F01E85EEC135EF3E9C2A5D91 /* Build configuration list for PBXNativeTarget "hueTests" */;
+			buildPhases = (
+				D01F0DA92924541034B10164 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = hueTests;
+			packageProductDependencies = (
+			);
+			productName = hueTests;
+			productReference = 7582A4BBD00FE0D3384A2273 /* hueTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E334D6561CD3F906FD370729 /* hue */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 79C00DCF6E90A005391CF237 /* Build configuration list for PBXNativeTarget "hue" */;
 			buildPhases = (
 				51E09DD8AEF1A8A33E3C61CB /* Sources */,
-				3A0B5B516FF6C0DF31CA8310 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = hue;
+			packageProductDependencies = (
+			);
 			productName = hue;
 			productReference = 46A83DDCE616112A7E816194 /* hue.app */;
 			productType = "com.apple.product-type.application";
@@ -187,6 +219,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					30ECDE74C2B6E80C815342A9 = {
+						DevelopmentTeam = MG3X82M499;
+						ProvisioningStyle = Automatic;
+					};
 					E334D6561CD3F906FD370729 = {
 						DevelopmentTeam = MG3X82M499;
 						ProvisioningStyle = Automatic;
@@ -208,21 +244,10 @@
 			projectRoot = "";
 			targets = (
 				E334D6561CD3F906FD370729 /* hue */,
+				30ECDE74C2B6E80C815342A9 /* hueTests */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		3A0B5B516FF6C0DF31CA8310 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7A5686C9F0F25F649AAA4449 /* Assets.xcassets in Resources */,
-				0ABB7395A9E4731C6CA26D94 /* Fonts in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		51E09DD8AEF1A8A33E3C61CB /* Sources */ = {
@@ -255,6 +280,19 @@
 				C83BDF1C418DC9E4F3805B17 /* PermissionView.swift in Sources */,
 				47DAB1ACADCD74DB67083236 /* PreferencesView.swift in Sources */,
 				F978634CCEDDA05CDA237623 /* WindowButtonsFader.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D01F0DA92924541034B10164 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80754C7C0A3C4D8A1B65DAD1 /* AudioFeatures.swift in Sources */,
+				E9818FC88555BB818DC55DCF /* AudioProcessor.swift in Sources */,
+				7E934A6A13140769FF313EB6 /* AudioProcessorTests.swift in Sources */,
+				749FBD257C581783BA30FB69 /* ColorProfile.swift in Sources */,
+				C408D61619972A9A3FAA6946 /* PerceptualMapper.swift in Sources */,
+				E094340D6F53D64E668DF494 /* PerceptualMapperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +359,24 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.10;
+			};
+			name = Release;
+		};
+		9258C46780B3E1BB48A872C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hue.tests;
+				PRODUCT_NAME = hueTests;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -405,10 +461,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				OTHER_LDFLAGS = (
-					"-framework",
-					ScreenCaptureKit,
-				);
+				OTHER_LDFLAGS = "-framework ScreenCaptureKit";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hue.app;
 				SDKROOT = macosx;
 			};
@@ -426,14 +479,29 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				OTHER_LDFLAGS = (
-					"-framework",
-					ScreenCaptureKit,
-				);
+				OTHER_LDFLAGS = "-framework ScreenCaptureKit";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hue.app;
 				SDKROOT = macosx;
 			};
 			name = Release;
+		};
+		DEE77E61F361E4A4C416D49D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hue.tests;
+				PRODUCT_NAME = hueTests;
+				SDKROOT = macosx;
+			};
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -452,6 +520,15 @@
 			buildConfigurations = (
 				C2C9143731662BDB608B52FD /* Debug */,
 				DD16DC6565FCEE85E6A39590 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F01E85EEC135EF3E9C2A5D91 /* Build configuration list for PBXNativeTarget "hueTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DEE77E61F361E4A4C416D49D /* Debug */,
+				9258C46780B3E1BB48A872C5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

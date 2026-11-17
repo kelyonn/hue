@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: build and unit tests
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: unit tests (logic bundle, no app launch)
+        working-directory: hue
+        run: |
+          xcodebuild test \
+            -project hue.xcodeproj -scheme hueTests \
+            -destination 'platform=macOS' \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Metal toolchain
+        run: xcodebuild -downloadComponent MetalToolchain || true
+
+      - name: build the app
+        working-directory: hue
+        run: |
+          xcodebuild build \
+            -project hue.xcodeproj -scheme hue \
+            -destination 'platform=macOS' \
+            CODE_SIGNING_ALLOWED=NO
