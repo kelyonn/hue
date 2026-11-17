@@ -50,19 +50,22 @@ targets:
         OTHER_LDFLAGS: "-framework ScreenCaptureKit"
 
   hueTests:
+    # A standalone logic-test bundle: the pure mapping and DSP sources are
+    # compiled straight in, so the tests never launch the app (which needs
+    # screen-recording permission and a Metal device to start).
     type: bundle.unit-test
     platform: macOS
     deploymentTarget: "14.0"
     sources:
       - path: hueTests
-    dependencies:
-      - target: hue
+      - hue/Audio/AudioProcessor.swift
+      - hue/Models/AudioFeatures.swift
+      - hue/Models/ColorProfile.swift
+      - hue/Renderer/PerceptualMapper.swift
     settings:
       base:
         PRODUCT_NAME: hueTests
         PRODUCT_BUNDLE_IDENTIFIER: com.hue.tests
-        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/hue.app/Contents/MacOS/hue"
-        BUNDLE_LOADER: "$(TEST_HOST)"
         GENERATE_INFOPLIST_FILE: YES
 
 schemes:
@@ -70,12 +73,15 @@ schemes:
     build:
       targets:
         hue: all
-        hueTests: [test]
     run:
       config: Debug
+    archive:
+      config: Release
+  hueTests:
+    build:
+      targets:
+        hueTests: [test]
     test:
       config: Debug
       targets:
         - hueTests
-    archive:
-      config: Release

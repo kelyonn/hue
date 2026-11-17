@@ -5,7 +5,6 @@
  Unauthorized copying, modification, or reuse in another product is prohibited.
 */
 import XCTest
-@testable import hue
 
 /// Feeds synthetic audio through the real DSP path (ring buffer, FFT,
 /// chroma, smoothing) and checks the features that come out.

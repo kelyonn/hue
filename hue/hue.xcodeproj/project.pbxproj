@@ -18,34 +18,28 @@
 		6247E636AE9D55237E874175 /* InfoOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15545BAA3088AD6706AB48FA /* InfoOverlay.swift */; };
 		6C9A6748E024AE43354C4AE9 /* MiniContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CE385C53A40353ADE569C6 /* MiniContentView.swift */; };
 		7052F71A3F678C2EF3589FF4 /* FloatingWindowConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD1717327724303062E5EDF /* FloatingWindowConfigurator.swift */; };
+		749FBD257C581783BA30FB69 /* ColorProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449E00C11CA5787AF9AC0100 /* ColorProfile.swift */; };
 		77EA4399B3619DA1E77F9F3E /* ColorProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449E00C11CA5787AF9AC0100 /* ColorProfile.swift */; };
 		7E934A6A13140769FF313EB6 /* AudioProcessorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039AE91EC2C44BA90A7DFB95 /* AudioProcessorTests.swift */; };
+		80754C7C0A3C4D8A1B65DAD1 /* AudioFeatures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696AAEC5CC44035C0615EF6B /* AudioFeatures.swift */; };
 		8445C959D956CF4166764C1C /* DiagnosticHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B725CBA4A01CDBA7DB0BAAF /* DiagnosticHUD.swift */; };
 		90CEE3470BA86459A750075C /* HueApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74FCA7862249790823D9F9 /* HueApp.swift */; };
 		A5DDE884FAD51B4E942E50BE /* AudioProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2487FB010265787D5DAF8DD7 /* AudioProcessor.swift */; };
 		A9F3D2B0DE2453EBAE8CC76A /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2169099848BF72FB888173A2 /* MetalRenderer.swift */; };
 		AC8C53CDA570C9F8357D4393 /* ColorProfileStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E006F1CB70C625EB56A621C /* ColorProfileStore.swift */; };
+		C408D61619972A9A3FAA6946 /* PerceptualMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5857CB976EB0183464141481 /* PerceptualMapper.swift */; };
 		C83BDF1C418DC9E4F3805B17 /* PermissionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F171B87703C0820F4E28FBC6 /* PermissionView.swift */; };
 		D36AEDBDB498EC0B3698CFC0 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613F2D856CD8E8A3DDC022C1 /* Color+Hex.swift */; };
 		DDF4474AA2947370C68B82EF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A90A8673B558BF1056309A /* ContentView.swift */; };
 		E094340D6F53D64E668DF494 /* PerceptualMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C8AAAAE66155A82E70C7B9 /* PerceptualMapperTests.swift */; };
 		E3AFDE8474770F56C4E2739E /* FieldMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A410DBCEB1585CFDD30CEF /* FieldMode.swift */; };
+		E9818FC88555BB818DC55DCF /* AudioProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2487FB010265787D5DAF8DD7 /* AudioProcessor.swift */; };
 		EBD584F63F47127525794B76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0764EA9792808928CDBC8C /* AppDelegate.swift */; };
 		F310EFA5EE29CD55937C7A4F /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D776A5492B641A3D05B55404 /* MetalView.swift */; };
 		F8FA53A3F3B37ACFEF7CA279 /* Font+Archivo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB547551372E9A3FCAAED26 /* Font+Archivo.swift */; };
 		F978634CCEDDA05CDA237623 /* WindowButtonsFader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4555A651E535608C720B0C3 /* WindowButtonsFader.swift */; };
 		FDF055004CA3CFBE8D439B04 /* PerceptualMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5857CB976EB0183464141481 /* PerceptualMapper.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		179546C637B8147B3D01BF99 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C0C2BA6ACA4C9CCD6F7F4ED2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E334D6561CD3F906FD370729;
-			remoteInfo = hue;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		039AE91EC2C44BA90A7DFB95 /* AudioProcessorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioProcessorTests.swift; sourceTree = "<group>"; };
@@ -191,7 +185,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				2CF388E9B500775DE3AD32FB /* PBXTargetDependency */,
 			);
 			name = hueTests;
 			packageProductDependencies = (
@@ -294,20 +287,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80754C7C0A3C4D8A1B65DAD1 /* AudioFeatures.swift in Sources */,
+				E9818FC88555BB818DC55DCF /* AudioProcessor.swift in Sources */,
 				7E934A6A13140769FF313EB6 /* AudioProcessorTests.swift in Sources */,
+				749FBD257C581783BA30FB69 /* ColorProfile.swift in Sources */,
+				C408D61619972A9A3FAA6946 /* PerceptualMapper.swift in Sources */,
 				E094340D6F53D64E668DF494 /* PerceptualMapperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2CF388E9B500775DE3AD32FB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E334D6561CD3F906FD370729 /* hue */;
-			targetProxy = 179546C637B8147B3D01BF99 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3EE224E018803E059FA891EC /* Release */ = {
@@ -388,7 +377,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hue.tests;
 				PRODUCT_NAME = hueTests;
 				SDKROOT = macosx;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hue.app/Contents/MacOS/hue";
 			};
 			name = Release;
 		};
@@ -512,7 +500,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hue.tests;
 				PRODUCT_NAME = hueTests;
 				SDKROOT = macosx;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hue.app/Contents/MacOS/hue";
 			};
 			name = Debug;
 		};

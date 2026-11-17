@@ -5,7 +5,6 @@
  Unauthorized copying, modification, or reuse in another product is prohibited.
 */
 import XCTest
-@testable import hue
 
 /// The mapping rules from CHROMESTHESIA_ENGINE.md, checked against the formula:
 /// pitch height drives lightness, mood drives hue, energy drives chroma.

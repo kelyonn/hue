@@ -15,13 +15,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Metal toolchain
-        run: xcodebuild -downloadComponent MetalToolchain || true
-
-      - name: test
+      - name: unit tests (logic bundle, no app launch)
         working-directory: hue
         run: |
           xcodebuild test \
+            -project hue.xcodeproj -scheme hueTests \
+            -destination 'platform=macOS' \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Metal toolchain
+        run: xcodebuild -downloadComponent MetalToolchain || true
+
+      - name: build the app
+        working-directory: hue
+        run: |
+          xcodebuild build \
             -project hue.xcodeproj -scheme hue \
             -destination 'platform=macOS' \
             CODE_SIGNING_ALLOWED=NO
