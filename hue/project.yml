@@ -48,3 +48,34 @@ targets:
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         # ScreenCaptureKit framework
         OTHER_LDFLAGS: "-framework ScreenCaptureKit"
+
+  hueTests:
+    type: bundle.unit-test
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: hueTests
+    dependencies:
+      - target: hue
+    settings:
+      base:
+        PRODUCT_NAME: hueTests
+        PRODUCT_BUNDLE_IDENTIFIER: com.hue.tests
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/hue.app/Contents/MacOS/hue"
+        BUNDLE_LOADER: "$(TEST_HOST)"
+        GENERATE_INFOPLIST_FILE: YES
+
+schemes:
+  hue:
+    build:
+      targets:
+        hue: all
+        hueTests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - hueTests
+    archive:
+      config: Release
